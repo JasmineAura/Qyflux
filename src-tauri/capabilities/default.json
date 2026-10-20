@@ -1,0 +1,6 @@
+{
+  "identifier": "desktop",
+  "description": "Local Qyflux windows",
+  "windows": ["main", "toolbox", "zone-*"],
+  "permissions": ["core:default", "core:window:allow-start-dragging", "core:window:allow-hide", "core:window:allow-minimize", "core:window:allow-close"]
+}

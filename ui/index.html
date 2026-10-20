@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Qyflux</title><link rel="stylesheet" href="style.css"><script src="icons.js" defer></script><script src="app.js" defer></script></head>
+<body>
+<div id="wallpaper"></div><div class="grain"></div>
+<div id="app" class="shell">
+  <header class="titlebar" data-tauri-drag-region><div class="wordmark" data-tauri-drag-region><span class="brand-icon">Q</span> QYFLUX <span class="version">/ 0.1</span></div><div class="window-actions"><button id="minimize" aria-label="最小化">−</button><button id="hide" aria-label="隐藏到托盘">×</button></div></header>
+  <aside class="sidebar"><div class="side-caption">YOUR SPACE.<br>YOUR RHYTHM.</div><nav>
+    <button class="nav-item active" data-page="launcher"><span class="nav-num">01</span><span>工具箱配置<small>TOOLBOX SETUP</small></span><span class="nav-arrow">↗</span></button>
+    <button class="nav-item" data-page="zones"><span class="nav-num">02</span><span>桌面区域<small>DESKTOP SPACES</small></span><span class="nav-arrow">↗</span></button>
+    <button class="nav-item" data-page="appearance"><span class="nav-num">03</span><span>外观实验室<small>MAKE IT YOURS</small></span><span class="nav-arrow">↗</span></button>
+    <button class="nav-item" data-page="settings"><span class="nav-num">04</span><span>偏好设置<small>PREFERENCES</small></span><span class="nav-arrow">↗</span></button>
+  </nav><div class="side-bottom"><div class="orbit"><span>✦</span></div><p>A little order.<br>A lot of possibility.</p><div class="status"><i></i> LOCAL / OFFLINE</div></div></aside>
+  <main>
+    <section class="page active" id="page-launcher">
+      <div class="eyebrow"><span class="line"></span> LESS FRICTION. MORE FLOW.</div>
+      <div class="heading"><div><h1>有序，<span>随心。</span></h1><p>在这里配置标签与文件，用 Alt+Space 呼出环形工具箱。</p></div><div class="hero-mark" aria-hidden="true">↗<i>GO</i></div></div>
+      <div class="search-wrap"><span class="search-icon">⌕</span><input id="search" placeholder="搜索应用、文件或文件夹…" autocomplete="off" aria-label="搜索快捷方式"><kbd>Alt</kbd><span class="plus">+</span><kbd>Space</kbd></div>
+      <div class="section-heading"><span>快捷方式管理</span><div><button class="text-button" id="open-toolbox">↗ 打开工具箱</button><button class="text-button" id="add-folder">+ 文件夹</button><button class="solid-button" id="add-entry">+ 添加快捷方式</button></div></div>
+      <div class="config-tab-row"><div id="config-tabs" role="tablist" aria-label="工具箱标签"></div><button id="config-new-tab" class="text-button">+ 新建标签</button><button id="config-edit-tab" class="text-button">编辑标签</button></div>
+      <div class="entries" id="shortcuts"></div>
+      <div class="drop-hint"><span>↙</span><div>把常用的，留在手边。<small>拖入应用、文件或文件夹，即可添加快捷方式</small></div><span class="hint-star">✳</span></div>
+      <div class="page-footer"><span>BUILT FOR YOUR EVERYDAY</span><span id="entry-count">0 ITEMS</span></div>
+    </section>
+    <section class="page" id="page-zones">
+      <div class="eyebrow"><span class="line"></span> ROOM FOR EVERYTHING.</div><div class="heading"><div><h1>各有，<span>归属。</span></h1><p>把桌面划成几个小世界，让专注自然发生。</p></div><div class="hero-mark compact">▧</div></div>
+      <div class="zone-create"><input id="zone-name" maxlength="32" placeholder="给新区域起个名字，例如：灵感收集" aria-label="区域名称"><button class="solid-button" id="create-zone">+ 创建透明区域</button></div>
+      <div class="zones" id="zones"></div><div class="note">区域以独立透明浮窗显示，可拖动、缩放。拖入文件保存的是引用，原文件保持原位。</div>
+    </section>
+    <section class="page" id="page-appearance">
+      <div class="eyebrow"><span class="line"></span> AN EXPRESSION OF YOU.</div><div class="heading"><div><h1>光影，<span>随心。</span></h1><p>调一点颜色，换一种心情。</p></div><div class="hero-mark compact">✳</div></div>
+      <div class="appearance-grid"><div class="controls">
+        <div class="control-block"><label>主题色 <span>ACCENT</span></label><div class="swatches"><button data-color="#a69aff" style="--swatch:#a69aff" aria-label="雾紫"></button><button data-color="#8fe3cf" style="--swatch:#8fe3cf" aria-label="薄荷"></button><button data-color="#e6c698" style="--swatch:#e6c698" aria-label="香槟"></button><button data-color="#e6a7bf" style="--swatch:#e6a7bf" aria-label="烟粉"></button><button data-color="#a5bfdc" style="--swatch:#a5bfdc" aria-label="雾蓝"></button><input type="color" id="accent" aria-label="自定义主题色"></div></div>
+        <div class="control-block"><label>窗口材质 <span>MATERIAL</span></label><div class="segments" id="materials"><button data-effect="acrylic">亚克力</button><button data-effect="blur">毛玻璃</button><button data-effect="clear">透明</button></div></div>
+        <div class="control-block"><label for="opacity">不透明度 <output id="opacity-value">84%</output></label><input type="range" id="opacity" min="15" max="100" value="84"><div class="range-labels"><span>通透</span><span>沉静</span></div></div>
+        <div class="setting-row"><div>荧光光晕<small>让焦点带一点光</small></div><label class="switch"><input id="glow" type="checkbox" checked><span></span></label></div>
+        <div class="setting-row"><div>流畅动效<small>斜切转场、交错入场与弹性反馈</small></div><label class="switch"><input id="motion" type="checkbox" checked><span></span></label></div>
+      </div><div><div class="preview"><div class="preview-label">LIVE PREVIEW <i></i></div><div class="preview-orbit">Q</div><strong>Find your flow.</strong><p>一方桌面，无限可能。</p><div class="preview-cards"><span>↗</span><span>▧</span><span>✦</span></div><div class="preview-corner">QY / 03</div></div><div class="background-actions"><button class="text-button" id="pick-bg">↗ 选择背景图片</button><button class="text-button" id="clear-bg">移除</button></div><p class="small-note">PNG / JPG / WEBP · 图片仅保存在本地</p></div></div>
+      <p class="small-note" id="wallpaper-note" hidden>背景图片模式下主窗口不透明；移除图片后恢复之前的材质和不透明度。快捷键圆盘使用独立的纯黑底。</p>
+      <div class="appearance-footer"><span id="save-state">调整将即时预览</span><button class="solid-button" id="save-appearance">保存外观 ↗</button></div>
+    </section>
+    <section class="page" id="page-settings">
+      <div class="eyebrow"><span class="line"></span> QUIETLY, BY YOUR SIDE.</div><div class="heading"><div><h1>恰好，<span>顺手。</span></h1><p>让工具适应你的习惯。</p></div></div>
+      <div class="settings-card"><div class="setting-row"><div>开机自启动<small>登录 Windows 后在托盘安静待命</small></div><label class="switch"><input id="autostart" type="checkbox"><span></span></label></div><div class="setting-row"><div>呼出 / 隐藏<small id="shortcut-status">随时回到你的快捷启动台</small></div><span><kbd>Alt</kbd> + <kbd>Space</kbd></span></div><div class="setting-row"><div>关闭主窗口<small>保留托盘图标与桌面区域，继续运行</small></div><span class="tag">常驻托盘</span></div><div class="setting-row"><div>数据保存在本机<small>快捷方式、主题与区域位置自动保存</small></div><span class="tag">无需联网</span></div></div>
+      <div class="about"><div class="wordmark">QYFLUX <span class="version">0.1.0 / RUST + TAURI</span></div><p>Make room for what matters.</p><button class="text-button danger" id="quit">退出 Qyflux ↗</button></div>
+    </section>
+  </main><div class="transition-slice" aria-hidden="true"></div>
+</div>
+<div id="zone-app" class="zone-shell" hidden><header data-tauri-drag-region><div data-tauri-drag-region><span class="zone-dot"></span><strong id="zone-title" data-tauri-drag-region>桌面区域</strong></div><div class="zone-actions"><button id="zone-style" aria-label="区域外观" title="设置区域底色与不透明度">⚙</button><button id="zone-hide" aria-label="隐藏区域">−</button></div></header><div id="zone-entries" class="zone-entries"></div><div class="zone-bottom"><span>DROP INTO YOUR FLOW</span><button id="zone-add" aria-label="添加文件">+</button></div><div class="zone-empty" id="zone-empty"><span>↙</span><p>把文件拖到这里</p><small>双击打开 · 右键移除引用</small></div><div id="zone-style-panel" hidden><label>区域底色<input type="color" id="zone-color" value="#171a25" aria-label="区域底色"></label><label>不透明度<output id="zone-opacity-value">22%</output></label><input type="range" id="zone-opacity" min="0" max="85" value="22" aria-label="区域不透明度"><button id="zone-style-save" class="solid-button">保存外观</button></div></div>
+<div id="toast" role="status"></div><div id="drop-overlay"><span>↙</span><strong>松开，收进你的空间。</strong><p>只添加引用，原文件保持原位</p></div>
+<dialog id="config-tab-dialog"><form id="config-tab-form"><div class="eyebrow">YOUR LABEL. YOUR FLOW.</div><h2 id="config-dialog-title">新建标签</h2><input id="config-tab-name" maxlength="24" placeholder="例如：工作、游戏、创作" aria-label="标签名称" required><p>删除标签时，文件引用会移至默认标签，保留原文件。</p><div class="dialog-actions"><button id="config-delete-tab" class="text-button danger" type="button" hidden>删除标签</button><button id="config-cancel-tab" class="text-button" type="button">取消</button><button class="solid-button" type="submit">保存 ↗</button></div></form></dialog>
+<div id="config-entry-menu" class="entry-menu" hidden><div class="menu-caption">移至标签</div><div id="config-move-tabs"></div><button id="config-remove-entry" class="danger">移除快捷方式</button></div>
+<link rel="stylesheet" href="surfaces.css">
+</body></html>

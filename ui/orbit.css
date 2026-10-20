@@ -1,0 +1,33 @@
+html,body { background:#000; }
+.orbit-shell { position:absolute; inset:1px; overflow:hidden; border-radius:50%; border:2px solid #000; background:#000; isolation:isolate; }
+.orbit-shell:before { content:""; position:absolute; inset:0; pointer-events:none; background:transparent; }
+.orbit-track { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); border-radius:50%; border:1px solid rgba(0,0,0,.82); pointer-events:none; }
+.orbit-track:first-child { border-width:2px; }
+.orbit-core { position:absolute; left:50%; top:50%; width:84px; height:84px; transform:translate(-50%,-50%); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:4px; user-select:none; z-index:3; border-radius:50%; }
+.orbit-brand { display:none; }
+.orbit-core strong { max-width:94px; font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#fff; text-shadow:0 1px 3px #000,0 0 5px #000; }
+#orbit-count { font-size:8px; color:#fff; text-shadow:0 1px 3px #000; }
+#orbit-close { font-size:17px; color:#fff; text-shadow:0 1px 3px #000; padding:0 8px; line-height:1; }
+#orbit-close:hover { color:var(--accent); }
+#orbit-pages { display:flex; align-items:center; justify-content:center; gap:4px; font-size:7px; color:#fff; text-shadow:0 1px 3px #000; }
+#orbit-pages button { color:var(--accent); font-size:16px; padding:0 4px; line-height:1; }
+#orbit-more-tabs { font-size:7px; color:var(--accent); padding:0; }
+.orbit-tab { position:absolute; left:calc(50% + var(--x)); top:calc(50% + var(--y)); transform:translate(-50%,-50%); width:57px; height:27px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:9px; padding:4px; border-radius:14px; color:#fff; text-shadow:0 1px 3px #000; background:transparent; border:1px solid rgba(0,0,0,.85); z-index:2; }
+.orbit-tab[aria-selected=true] { color:#16141f; background:var(--accent); border-color:#000; text-shadow:none; font-weight:700; box-shadow:0 0 18px rgba(var(--accent-rgb),.14); }
+.orbit-tab:hover { border-color:var(--accent); }
+.orbit-app { position:absolute; left:calc(50% + var(--x)); top:calc(50% + var(--y)); transform:translate(-50%,-50%); width:62px; height:62px; padding:3px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; border-radius:13px; border:1px solid transparent; animation:orbit-node .28s var(--ease) backwards; animation-delay:calc(var(--i)*12ms); z-index:2; transition:transform .22s var(--ease); }
+.orbit-app:hover { transform:translate(-50%,-50%) scale(1.1); background:rgba(var(--accent-rgb),.12); border-color:rgba(var(--accent-rgb),.3); box-shadow:0 0 22px rgba(var(--accent-rgb),.12); }
+.orbit-app:hover,.orbit-app.sector-active { transform:translate(-50%,-50%) scale(1.12); background:transparent; border-color:transparent; box-shadow:none; }
+.orbit-app.sector-active { animation:none; }
+#orbit-sectors { position:absolute; inset:0; width:100%; height:100%; z-index:1; overflow:visible; pointer-events:none; }
+.orbit-sector { fill:#101010; stroke:#000; stroke-width:2px; vector-effect:non-scaling-stroke; pointer-events:all; cursor:pointer; transition:fill .12s ease-out,stroke .12s ease-out,filter .16s ease-out; }
+.orbit-sector.active { fill:rgba(var(--accent-rgb),.58); stroke:var(--accent); stroke-width:2.5px; filter:drop-shadow(0 0 8px rgba(var(--accent-rgb),.3)); }
+.orbit-app:focus-visible { outline:1px solid var(--accent); outline-offset:3px; }
+.orbit-icon { display:grid; place-items:center; width:34px; height:34px; font-size:26px; color:var(--accent); }
+.orbit-icon .system-icon { width:34px; height:34px; }
+.orbit-app-name { font-size:8px; width:100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#eeedf6; text-shadow:0 1px 4px #0009; }
+#orbit-empty { position:absolute; top:calc(50% + 124px); left:50%; transform:translateX(-50%); color:var(--muted); font-size:10px; width:240px; text-align:center; }
+.orbit-mode #toast { bottom:auto; top:58%; }
+.orbit-arrive { animation:orbit-open .27s var(--ease) backwards; }
+@keyframes orbit-open { from { transform:scale(.985); } to { transform:scale(1); } }
+@keyframes orbit-node { from { opacity:0; transform:translate(-50%,-50%) scale(.9); } to { opacity:1; transform:translate(-50%,-50%) scale(1); } }

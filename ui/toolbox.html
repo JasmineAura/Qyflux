@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Qyflux 环形工具箱</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="surfaces.css"><link rel="stylesheet" href="orbit.css"><script src="icons.js" defer></script><script src="toolbox.js" defer></script></head>
+<body class="orbit-mode">
+<div id="toolbox" class="orbit-shell">
+  <div id="orbit-tracks" aria-hidden="true"></div>
+  <svg id="orbit-sectors" aria-hidden="true"></svg>
+  <div id="orbit-tabs" role="tablist" aria-label="标签内环"></div>
+  <div id="orbit-apps" aria-label="应用多层圆环"></div>
+  <div class="orbit-core" data-tauri-drag-region>
+    <span class="orbit-brand" data-tauri-drag-region>Q</span>
+    <strong id="orbit-title" data-tauri-drag-region>常用</strong>
+    <span id="orbit-count" data-tauri-drag-region>0 ITEMS</span>
+    <div id="orbit-pages" hidden><button id="orbit-prev" aria-label="上一页">‹</button><span id="orbit-page">01 / 01</span><button id="orbit-next" aria-label="下一页">›</button></div>
+    <button id="orbit-more-tabs" hidden title="切换下一组标签">更多标签 ›</button>
+    <button id="orbit-close" aria-label="隐藏工具箱" title="Esc 隐藏">×</button>
+  </div>
+  <div id="orbit-empty" hidden>在主程序中给这个标签添加应用</div>
+</div>
+<div id="toast" role="status"></div>
+</body></html>
