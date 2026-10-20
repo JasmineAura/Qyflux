@@ -3,3 +3,4 @@ src-tauri/gen/
 node_modules/
 *.log
 /Qyflux.exe
+/dist/

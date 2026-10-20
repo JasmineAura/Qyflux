@@ -12,6 +12,8 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/JasmineAura/Qyflux/releases/latest"><strong>下载 Windows 版本</strong></a> ·
+  <a href="#下载安装">下载安装</a> ·
   <a href="#功能亮点">功能亮点</a> ·
   <a href="#界面展示">界面展示</a> ·
   <a href="#开始使用">开始使用</a> ·
@@ -23,6 +25,14 @@
 Qyflux 把常用应用、文件和文件夹收进一个随时可唤起的环形工具箱，也为桌面提供可以自由摆放的整理区域。配置在主程序中完成，日常启动只需按下 **Alt + Space**。
 
 > 项目处于早期开发阶段。下方展示图使用当前界面与示例数据制作；Windows 原生玻璃材质以实际运行效果为准。
+
+## 下载安装
+
+前往 **[GitHub Releases 下载最新版](https://github.com/JasmineAura/Qyflux/releases/latest)**，选择 `Qyflux-v版本号-windows-x64.zip`，解压后双击 `Qyflux.exe`。也可以直接下载单文件 `.exe`。
+
+适用于 **Windows 10 / 11 x64**，无需安装 Rust 或 Node.js；运行需要 [Microsoft Edge WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/)。`Source code` 是源码压缩包，普通用户请选择上面的预编译程序。
+
+更新时先从托盘退出旧版，再替换程序。用户配置保存在 `%APPDATA%/studio.qyflux.desktop/`，更新程序后保留。
 
 ## 功能亮点
 
@@ -114,6 +124,16 @@ npm run build
 ```
 
 输出文件：`src-tauri/target/release/qyflux.exe`。当前构建命令生成可运行程序，不生成安装包；运行环境需要 WebView2 Runtime。
+
+在 PowerShell 中生成下载包与校验值：
+
+```powershell
+./scripts/package-release.ps1
+```
+
+产物位于 `dist/`，包含 Windows x64 EXE、ZIP 与 `SHA256SUMS.txt`。
+
+维护者后续可更新 `package.json`、`package-lock.json`、`src-tauri/Cargo.toml`、`src-tauri/Cargo.lock` 和 `src-tauri/tauri.conf.json` 的版本号，添加对应的 `docs/releases/v版本号.md`，提交后在 GitHub 的 **Actions → Build and publish Windows release → Run workflow** 输入版本号。工作流会检查、测试、编译并发布带下载附件的 Release。
 
 ### 检查与测试
 
